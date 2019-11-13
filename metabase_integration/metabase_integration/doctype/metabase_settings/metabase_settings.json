@@ -38,7 +38,7 @@
  "issingle": 1,
  "modified": "2019-10-14 22:12:13.823169",
  "modified_by": "Administrator",
- "module": "Integrations",
+ "module": "Metabase Integration",
  "name": "Metabase Settings",
  "owner": "Administrator",
  "permissions": [
