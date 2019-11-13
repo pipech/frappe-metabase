@@ -13,19 +13,58 @@ frappe.pages['metabase-dashboard'].on_page_load = (wrapper) => {
 
 class MetabaseDashboard {
 	constructor(page, wrapper) {
+		this.currentDashboard = false;
 		this.wrapper = wrapper;
-		this.page = page;
 		this.pageMain = $(page.main);
 		this.pageAction = (
 			$(this.wrapper)
 				.find('div.page-head div.page-actions')
 		);
 		this.pageTitle = $(this.wrapper).find('div.title-text');
+
 		this.init();
 	}
 
 	init() {
 		this.createSelectionField();
+	}
+
+	showIframe() {
+		this.getSettings().then(
+			(r) => {
+				// set variable
+				this.settings = r.message;
+				this.resizer = this.settings.resizer;
+				this.iframeUrl = this.settings.iframeUrl;
+				this.name = this.settings.name;
+
+				if (this.iframeUrl && this.resizer) {
+					// prepare html
+					const iFrameHtml = `
+						<script id="resizer" src="${this.resizer}"></script>
+						<iframe
+							src="${this.iframeUrl}"
+							frameborder="0"
+							width=100%
+							onload="iFrameResize({}, this)"
+							allowtransparency
+						></iframe>
+					`;
+
+					// append html to page
+					this.iFrame = $(iFrameHtml).appendTo(this.pageMain);
+				}
+			}
+		);
+	}
+
+	getSettings() {
+		return frappe.call({
+			'method': 'metabase_integration.metabase_integration.doctype.metabase_dashboard.get_url',
+			'args': {
+				'dashboard': this.dashboardName,
+			},
+		});
 	}
 
 	createSelectionField() {
@@ -40,7 +79,16 @@ class MetabaseDashboard {
 					const dashboardName = this.selectionField.get_value();
 					if (dashboardName) {
 						this.dashboardName = dashboardName;
-						this.changeTitle(dashboardName);
+						if (this.currentDashboard != this.dashboardName) {
+							// clear page html
+							this.pageMain.empty();
+
+							this.showIframe();
+							this.changeTitle();
+
+							// set current dashboard
+							this.currentDashboard = this.dashboardName;
+						}
 						// clear input
 						this.selectionField.set_input('');
 					}
