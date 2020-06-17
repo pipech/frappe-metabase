@@ -14,7 +14,7 @@ Metabase is a simple, useful and easy to use dashboard tools.
 
 #### Installation
 
-    bench get-app https://github.com/pipech/frappe-metabase.git metabase_integration
+    bench get-app metabase_integration https://github.com/pipech/frappe-metabase.git
     bench install-app metabase_integration
 
 #### Setting up
