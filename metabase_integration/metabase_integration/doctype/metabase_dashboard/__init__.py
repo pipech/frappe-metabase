@@ -52,7 +52,7 @@ def get_url(dashboard):
 	iframeUrl = ''.join([
 		metabase_config.metabase_url,
 		'/embed/dashboard/',
-		token.decode('utf8'),
+		token,
 		'#',
 		config_param,
 	])
