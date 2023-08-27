@@ -56,7 +56,6 @@ class MetabaseDashboard {
 	}
 
 	getSettings() {
-		console.log("sadasdasdasdas")
 		return frappe.call({
 			'method': 'metabase_integration.metabase_integration.doctype.metabase_dashboard.get_url',
 			'args': {
