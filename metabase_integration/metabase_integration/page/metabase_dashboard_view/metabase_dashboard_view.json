@@ -1,0 +1,23 @@
+{
+ "content": null,
+ "creation": "2019-11-13 14:44:55.203657",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2022-09-16 14:46:34.941405",
+ "modified_by": "Administrator",
+ "module": "Metabase Integration",
+ "name": "metabase-dashboard-view",
+ "owner": "Administrator",
+ "page_name": "metabase-dashboard-view",
+ "roles": [
+  {
+   "role": "All"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Metabase Dashboard New"
+}
