@@ -60,20 +60,6 @@ def get_url(dashboard):
         config_param,
     ])
 
-    #Rewriting meatebase iframeUrl generation here
-    METABASE_SITE_URL = metabase_config.metabase_url
-    METABASE_SECRET_KEY = metabase_config.metabase_secret
-
-    payload = {
-    "resource": {"dashboard": int(dashboard.dashboard_id)},
-    "params": {
-        "user": frappe.session.user
-    },
-    "exp": round(time.time()) + (60 * 10) # 10 minute expiration
-    }
-    token = jwt.encode(payload, METABASE_SECRET_KEY, algorithm="HS256")
-    iframeUrl = METABASE_SITE_URL + "/embed/dashboard/" + token + "#bordered=true&titled=true"    
-
     return {
         'name': dashboard.dashboard_name,
         'resizer': resizer,
