@@ -1,0 +1,52 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2023-09-24 18:17:48.537978",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "metabase_dashboard",
+  "dashboard_id",
+  "default_dashboard"
+ ],
+ "fields": [
+  {
+   "columns": 3,
+   "fieldname": "metabase_dashboard",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Dashboard",
+   "options": "Metabase Dashboard"
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "default_dashboard",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Default"
+  },
+  {
+   "columns": 1,
+   "fetch_from": "metabase_dashboard.dashboard_id",
+   "fieldname": "dashboard_id",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Dashboard ID"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-09-24 18:24:30.550681",
+ "modified_by": "Administrator",
+ "module": "Metabase Integration",
+ "name": "Metabase View Dashboard",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,11 +1,8 @@
-/* eslint require-jsdoc: 0 */
-
-frappe.pages['metabase-dashboard'].on_page_load = (wrapper) => {
-	// init page
-	const page = frappe.ui.make_app_page({
-		'parent': wrapper,
-		'title': 'Dashboard',
-		'single_column': true,
+frappe.pages['tms-mb-dashboard-1'].on_page_load = function(wrapper) {
+	var page = frappe.ui.make_app_page({
+		parent: wrapper,
+		title: 'MB Dashboard 1',
+		single_column: true,
 	});
 
 	new MetabaseDashboard(page, wrapper);
@@ -36,6 +33,7 @@ class MetabaseDashboard {
 				this.settings = r.message;
 				this.resizer = this.settings.resizer;
 				this.iframeUrl = this.settings.iframeUrl;
+//				this.iframeUrl += "&user="+frappe.session.user;
 				this.name = this.settings.name;
 
 				if (this.iframeUrl && this.resizer) {
